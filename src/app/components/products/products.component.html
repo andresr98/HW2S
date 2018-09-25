@@ -1,0 +1,23 @@
+<div class="container">
+  <h1>Búsqueda de Productos, Marcas Y más...</h1>
+
+  <form (ngSubmit)="searchProducts()" #seacrhForm="ngForm">
+    <div class="form-group">
+      <input type="text" class="form-control" name="query" required [(ngModel)] = "data.query" placeholder="Escriba su búsqueda">
+    </div>
+
+    <button type="submit" class="btn btn-sucess" [disabled]="!seacrhForm.form.valid">Buscar</button>
+  </form>
+  <br>
+  <br>
+  <br>
+</div>
+
+<div class="container">
+  <ul>
+    <div *ngFor="let item of products">
+        <li >{{item.title}}</li>
+        <img src="{{item.thumbnail}}">
+    </div>
+  </ul>
+</div>
