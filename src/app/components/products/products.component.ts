@@ -13,17 +13,25 @@ export class ProductsComponent implements OnInit {
     flag: false
   }
 
-  listProduct: any;
-  products: any;
+  listProducts: any;
+  products: any = [];
   constructor(private mercadolibreService: MercadoLibreService) {this.data.flag= false;}
 
   ngOnInit() {
   }
 
   searchProducts(){
+    this.listProducts = {};
+    this.products = [];
     this.mercadolibreService.searchProducts(this.data.query).subscribe(data => {
-      this.listProduct = data;
-      this.products = this.listProduct.results;
+      this.listProducts = data.results;
+
+      this.listProducts.forEach(product => {
+        this.mercadolibreService.searchProduct(product.id).subscribe(data => {
+          this.products.push(data);
+        })
+        
+      });
     });
     this.data.query = "";
     this.data.flag = true;

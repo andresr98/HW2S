@@ -1,0 +1,16 @@
+.card{
+    text-align: center;
+    clear: both;
+}
+
+.information{
+    text-align: left;
+    float: left;
+    padding: 5px;
+    width: 60%;
+}
+
+.image{
+    float: left;
+    width: 40%;
+}
